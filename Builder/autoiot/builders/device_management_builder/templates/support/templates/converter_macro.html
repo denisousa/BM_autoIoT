@@ -1,0 +1,3 @@
+{% macro insert_statement(code) %}{% autoescape false %}{{'{% ' + code + ' %}'}}{% endautoescape %}{% endmacro %}
+
+{% macro insert_code(code) %}{% autoescape false %}{{'{{ ' + code + ' }}'}}{% endautoescape %}{% endmacro %}

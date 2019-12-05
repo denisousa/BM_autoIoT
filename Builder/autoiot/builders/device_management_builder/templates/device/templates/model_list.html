@@ -1,0 +1,25 @@
+[% extends 'base.html' %]
+[% block page %]
+
+
+[% from 'components/model_table.html' import model_table %]
+
+{% set model_camel = str_converter(device.name).camel()|string %}
+
+<div class="container">
+
+    <div class="card mt-4">
+        <div class="justify-content-center text-center mt-4">
+            <h1>Device</h1>
+            <h3>{{device.name}}</h3>
+
+            [{ model_table( "{{device.name}}", "{{model_camel}}", models, list_of_attrs, list_of_sensors) }]
+        </div>
+
+    </div>
+
+
+
+</div>
+
+[% endblock %]

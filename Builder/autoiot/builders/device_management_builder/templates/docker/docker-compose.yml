@@ -1,0 +1,42 @@
+{% macro postgres() %}
+  postgis:
+        restart: always
+        image: kartoza/postgis:10.0-2.4
+        volumes:
+            - 'postgis-data:/var/lib/postgresql'
+            - 'dbbackups:/backups'
+        environment:
+            - POSTGRES_USER={{project.database.username}}
+            - POSTGRES_PASSWORD={{project.database.password}}
+            - POSTGRES_DB={{project.database.database_name}}
+        expose:
+            - "5432"
+{% endmacro %}
+
+{% macro app() %}
+  app:
+        restart: always
+        build: .
+        ports:
+          - {{project.app_port}}:5000
+        depends_on:
+          - postgis
+        {% if mount_volumes %}
+        volumes:
+          - .:/app
+        {% endif %}
+        entrypoint: ["python", "main.py"]
+{% endmacro %}
+
+version: '3'
+
+volumes:
+  dbbackups:
+  postgis-data:
+
+services:
+  {{app()}}
+  {{postgres()}}
+
+
+
