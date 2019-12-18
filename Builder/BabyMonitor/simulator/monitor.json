@@ -1,0 +1,35 @@
+{
+    "register_topic": "baby_monitor_project/register/monitor",
+    "send_data_topic": "baby_monitor_project/data/monitor",
+    "sensors": {
+        "main_sensor_sensor": {
+            "sleeping": [
+                "Integer",
+                1,
+                0,
+                100
+            ],
+            "crying": [
+                "Integer",
+                1,
+                0,
+                100
+            ],
+            "time_no_breathing": [
+                "Integer",
+                1,
+                0,
+                100
+            ]
+        }
+    },
+    "key": "monitor-x",
+    "fields": {
+        "barcode": "test",
+        "name": "test"
+    },
+    "send_interval": [
+        10,
+        15
+    ]
+}

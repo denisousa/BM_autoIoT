@@ -1,0 +1,366 @@
+<!DOCTYPE html><html><head>
+      <title>Tutorial</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///C:\Users\ThiNepo\.atom\packages\markdown-preview-enhanced\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   ">
+      <h1 class="mume-header" id="autoiot-demo">AutoIoT Demo</h1>
+
+<p>AutoIoT is a framework that allows developers to generate a ready-to-use IoT server-side application with minimal configuration. It uses Model-driven Engineering (MDE) to model an IoT application and Model-to-Model, and Model-to-Text transformations to transform the inputted configuration in a complete application source code.</p>
+<p>Based on a common input (a single model) AutoIoT can generate different IoT applications using different Specialized Builders. For this demo only one Builder is available, there is no Graphical User Interface (since it is still in final stages of development) and simple command line tools will be used instead.</p>
+<p>The available Specialized Builder in this Demo is the Device Management Builder, and it generates a system that provides a virtual representation of IoT devices. The generated system connects with IoT devices using an MQTT Broker, stores their information in a database, includes data visualization through a Web GUI and has a user management system to protect access to stored data.</p>
+<h4 class="mume-header" id="1-project-description-file">1. Project Description File</h4>
+
+<p>The first step is look inside the <strong>container_project.json</strong> file located inside the <em>Builder</em> directory.</p>
+<pre data-role="codeBlock" data-info="" class="language-"><code>{
+  &quot;project&quot;: {
+    &quot;name&quot;: &quot;Container Management Project&quot;,
+    &quot;description&quot;: &quot;The Container Management Project.&quot;,
+    &quot;app_port&quot;: 5000
+  },
+  &quot;database&quot;: {
+    &quot;type&quot;: &quot;sqlite&quot;,
+    &quot;hostname&quot;: &quot;localhost&quot;,
+    &quot;port&quot;: 0,
+    &quot;database_name&quot;: &quot;&quot;,
+    &quot;username&quot;: &quot;&quot;,
+    &quot;password&quot;: &quot;&quot;
+  },
+  &quot;mqtt&quot;: {
+    &quot;hostname&quot;: &quot;iot.eclipse.org&quot;,
+    &quot;port&quot;: 1883,
+    &quot;username&quot;: &quot;&quot;,
+    &quot;password&quot;: &quot;&quot;
+  },
+  &quot;devices&quot;: [
+    {
+      &quot;name&quot;: &quot;Container&quot;,
+      &quot;description&quot;: &quot;An IoT device that sends temperature, position and filing status.&quot;,
+      &quot;fields&quot;: {
+        &quot;name&quot;: &quot;String&quot;,
+        &quot;barcode&quot;: &quot;String&quot;
+      },
+      &quot;sensors&quot;: [
+        {
+          &quot;name&quot;: &quot;MainSensor&quot;,
+          &quot;fields&quot;: {
+            &quot;send_interval&quot;: &quot;String&quot;
+          },
+          &quot;data_fields&quot;: {
+            &quot;temperature&quot;: &quot;Float&quot;,
+            &quot;filing_status&quot;: &quot;Integer&quot;,
+            &quot;position&quot;: &quot;Point&quot;
+          }
+        }
+      ]
+    }
+  ]
+}
+</code></pre><p>It contains all the information required for the project such as, connection with the database, connection with the MQTT Broker and description of the device and its sensors. You can change the settings according to your project needs like, for example, changing the port, database or adding new devices or sensors.</p>
+<p><strong>To avoid additional dependencies we are using the SQlite database in this example, so you do not have to install any additional software. In a real project you should use a more robust database option like PostgreSQL (just change from &quot;sqlite&quot; to &quot;postgre&quot; in database type).</strong></p>
+<h4 class="mume-header" id="2-generate-the-iot-server-side-application">2. Generate the IoT Server-side Application</h4>
+
+<p>The application source code can be generated using the <strong>autoiot.exe</strong> file (or the <strong>autoiot_linux</strong> for Linux users) located inside the Builder folder.</p>
+<p><img src="images\builder_folder.png" alt="Builder Folder"></p>
+<p>When executed the user can choose the output directory (where the code will be generated), hit <strong>ENTER</strong> to keep default options, or provide a custom path for the project (in this tutorial we choose <strong>MyIoTProject</strong>), and inform the path for the JSON file that contains the project description (hit <strong>ENTER</strong> to use the <em>container_project.json</em>).</p>
+<p><img src="images\builder_running\builder_running_1.png" alt="AutoIoT Demo App 1"></p>
+<p>Define the path where the source code should be generated, as depicted below enter &quot;MyIoTProject&quot; in order to create the folder MyIoTProject that will contain the generated source code.</p>
+<p><img src="images\builder_running\builder_running_2.png" alt="AutoIoT Demo App 2"></p>
+<p>Confirm the path, be careful to not override a previous generated project (hit ENTER to confirm the default choice).</p>
+<p><img src="images\builder_running\builder_running_3.png" alt="AutoIoT Demo App 3"></p>
+<p>Provide the path of the configuration file. This only supports the <strong>json</strong> file format (hit ENTER to confirm the default choice).</p>
+<p><img src="images\builder_running\builder_running_4.png" alt="AutoIoT Demo App 4"></p>
+<p>The code is then generated...</p>
+<p><img src="images\builder_running\builder_running_6.png" alt="AutoIoT Demo App 6"></p>
+<p>By default, the project is generated in <em>output/project</em> folder. In this tutorial, we choose to generate it inside the <strong>MyIoTProject</strong> folder, as can be seen above. The generated application is a ready-to-use <a href="http://flask.pocoo.org/">Flask</a> project and can be deployed locally or in the cloud. Flask is one of the most used Python framework to create web applications, it was chosen for being the <a href="http://flask.pocoo.org/docs/1.0/quickstart/">easiest framework to start web development</a>.</p>
+<p><img src="images\project_is_generated.png" alt="Project is Generated"></p>
+<h4 class="mume-header" id="3-understanding-the-generated-project">3. Understanding the Generated Project</h4>
+
+<p>The generated project follows the MVC pattern (Model-View-Controller).</p>
+<p><img src="images\generated_project.png" alt="Generated Project"></p>
+<p>The <strong>Models</strong>  are inside the <em>models</em> folder. They abstract the device, its sensors, and the users of the system. Developers may want to change them when adding more fields for the devices or sensors (that will update the database schema) or when extending the Device class adding new functions.</p>
+<p>The <strong>Views</strong> are inside the <em>templates</em> folder. They are <a href="http://jinja.pocoo.org/docs/2.10/">Jinja2</a> templates and are rendered by controllers to create the Graphical User Interface (GUI). Developers may want to change them when changing the GUI, add buttons, add links, changing colors or creating entirely new components (e.g., new charts).</p>
+<p>The <strong>Controllers</strong> are inside the <em>controllers</em> folder. They manage how the system reacts when a user reaches an endpoint (URL). Developers may want to change it when adding more endpoints or changing the behavior of the existing ones.</p>
+<ul>
+<li>
+<p>The <em>main</em> file, located in the root directory of the generated project, is the entry point for the whole system. The system can be started using <code>python main.py</code>. Developers may want to change it when adding more <a href="https://github.com/humiaozuzu/awesome-flask">Flask plugins</a> to the project.</p>
+</li>
+<li>
+<p>The <em>MQTTManager</em> file manages how the system reacts to MQTT messages sent by the devices or third-party systems. Developers may want to change when they want the system to react to more MQTT topics or change how the system reacts to existing ones. For example, instead of just store the container sensor data in the database, check if the <em>filling_status</em> is 0 if so send an email to administrators informing that the container is empty.</p>
+</li>
+<li>
+<p>The <em>config</em> file store the general configuration of the system. Developers may want to change it when changing database configuration (username, password, hostname and database name) or MQTT configuration (URL to the MQTT Broker, port, username, and password).</p>
+</li>
+</ul>
+<h4 class="mume-header" id="4-deploying-the-generated-system">4. Deploying the Generated System</h4>
+
+<p>Open a console in the folder where your application was generated. If you are using Windows 10 you can use CTRL + RIGHT CLICK and choose &quot;Open PowerShell window here&quot;.</p>
+<p>To run the generated application locally you need to install the python libraries from the <em>requirements.txt</em>.</p>
+<pre data-role="codeBlock" data-info="" class="language-"><code>pip install -r requirements.txt
+</code></pre><blockquote>
+<p>Maybe you want to use a <a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a> for this.</p>
+</blockquote>
+<p>Run the setup script to create and populate the database.</p>
+<pre data-role="codeBlock" data-info="" class="language-"><code>python db_manager.py setup
+</code></pre><p>Run your application using:</p>
+<pre data-role="codeBlock" data-info="" class="language-"><code>python main.py
+</code></pre><p>The application is already running!</p>
+<h4 class="mume-header" id="5-application-is-running">5. Application is Running</h4>
+
+<p>With the application running, go to  <em><a href="http://localhost:5000">http://localhost:5000</a></em> and make the login using username <strong>admin</strong> and password <strong>admin</strong>.</p>
+<p><img src="images\app_running.png" alt="App Running"></p>
+<p>To verify that your application is connected to the MQTT Broker, look in your console and search for the following line: &quot;Connected with result code 0&quot;. If you can&apos;t find this line, you application is not able to receive data from the devices. You can try to generate your application again using a different MQTT Broker from the <a href="https://github.com/mqtt/mqtt.github.io/wiki/public_brokers">list</a>, remember of changing the Broker in the config.json in the Simulator folder also.</p>
+<p><img src="images\broker_connected.png" alt="Broker Connected"></p>
+<h4 class="mume-header" id="6-running-the-simulator">6. Running the Simulator</h4>
+
+<p>The root folder of your generated project has a <em>simulator</em> folder. It contains files that can be used by <strong>AutoIoT Simulator</strong> to simulate virtual device and generate fake data to test the deployment.</p>
+<p>Copy the json file(s) from the <em>simulator</em> (inside your project folder) and past them in the <em>devices</em> folder inside the <strong>Simulator</strong> project (located inside the <strong>AutoIoT Demo</strong> folder).</p>
+<p><img src="images\simulator_0.png" alt="Simulator"></p>
+<p>After that (with the Flask application running) run the <em>simulator.exe</em> (or <em>simulator_linux</em> for Linux users), hit ENTER to choose the default option.</p>
+<p><img src="images\simulator_3.png" alt="Simulator 3"></p>
+<p>The Simulator will try to register a new virtual device and start to send data.</p>
+<p><img src="images\simulator_4.png" alt="Simulator 4"></p>
+<blockquote>
+<p>For this test we are using a public MQTT Broker, if you want to change it you need to change the configuration in the <em>container_project.json</em> (Builder folder) and <em>config.json</em> (Simulator folder).</p>
+</blockquote>
+<h4 class="mume-header" id="7-generated-application">7. Generated Application</h4>
+
+<p>The generate application provide device abstraction for the types of devices provided in the configuration file.</p>
+<p><img src="images\generated_application_1.png" alt="Generated Application 1"></p>
+<p>It contains a list of registered devices and start to store data sent by the devices.</p>
+<p><img src="images\generated_application_2.png" alt="Generated Application 2"></p>
+<p>It also provide a dashboard where the user can visualize the data in real-time. The Simulator sends data every 10-15 seconds, so you need to wait some seconds to see the charts changing in real-time.</p>
+<p><img src="images\generated_application_3.png" alt="Generated Application 3"></p>
+<h4 class="mume-header" id="8-api">8. API</h4>
+
+<p>AutoIoT automatically generate an API based on the available models. If you followed the tutorial without any changes in the <em>container_project.json</em> file, your <em>models</em> folder looks like the image below:</p>
+<p><img src="images\models_folder.png" alt="Models"></p>
+<p>Then, you can access the respective data from each model in the following endpoints:</p>
+<p><a href="http://localhost:5000/api/container">http://localhost:5000/api/container</a></p>
+<p><a href="http://localhost:5000/api/container_main_sensor">http://localhost:5000/api/container_main_sensor</a></p>
+<p><a href="http://localhost:5000/api/container_main_sensor_data">http://localhost:5000/api/container_main_sensor_data</a></p>
+<p>You can also query the data following the <a href="https://flask-restless.readthedocs.io/en/0.15.0/searchformat.html">Flask-Restless syntax</a>.</p>
+<h3 class="mume-header" id="congratulations">Congratulations!!!</h3>
+
+<p>You have successfully tested AutoIoT, please go back to the questionnaire and finish it, thanks for your contribution.</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

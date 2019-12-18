@@ -81,42 +81,24 @@ if __name__ == '__main__':
         mqttManager = MQTTManager()
         mqttManager.start()
 
-    # Baby_MonitorSocket manages web socket communication between client and server
-    from sockets import Baby_MonitorSocket
-    socketio.on_namespace(Baby_MonitorSocket(app, "/data_baby__monitor"))
-    # Smart_LightSocket manages web socket communication between client and server
-    from sockets import Smart_LightSocket
-    socketio.on_namespace(Smart_LightSocket(app, "/data_smart__light"))
+    # MonitorSocket manages web socket communication between client and server
+    from sockets import MonitorSocket
+    socketio.on_namespace(MonitorSocket(app, "/data_monitor"))
 
 
 
-    # Automatically generates an API based on Baby_Monitor model
-    from models import Baby_Monitor
-    api.create_api(Baby_Monitor, methods=['GET', 'POST', 'DELETE'], primary_key='key')
+    # Automatically generates an API based on Monitor model
+    from models import Monitor
+    api.create_api(Monitor, methods=['GET', 'POST', 'DELETE'], primary_key='key')
 
-    # Automatically generates an API based on Baby_MonitorMainSensor model
-    from models import Baby_MonitorMainSensor
-    api.create_api(Baby_MonitorMainSensor, methods=['GET', 'POST', 'DELETE']
+    # Automatically generates an API based on MonitorMainSensor model
+    from models import MonitorMainSensor
+    api.create_api(MonitorMainSensor, methods=['GET', 'POST', 'DELETE']
                    )
 
-    # Automatically generates an API based on Baby_MonitorMainSensorData model
-    from models import Baby_MonitorMainSensorData
-    api.create_api(Baby_MonitorMainSensorData, methods=['GET', 'POST', 'DELETE']
-                  )
-
-
-    # Automatically generates an API based on Smart_Light model
-    from models import Smart_Light
-    api.create_api(Smart_Light, methods=['GET', 'POST', 'DELETE'], primary_key='key')
-
-    # Automatically generates an API based on Smart_LightMainSensor model
-    from models import Smart_LightMainSensor
-    api.create_api(Smart_LightMainSensor, methods=['GET', 'POST', 'DELETE']
-                   )
-
-    # Automatically generates an API based on Smart_LightMainSensorData model
-    from models import Smart_LightMainSensorData
-    api.create_api(Smart_LightMainSensorData, methods=['GET', 'POST', 'DELETE']
+    # Automatically generates an API based on MonitorMainSensorData model
+    from models import MonitorMainSensorData
+    api.create_api(MonitorMainSensorData, methods=['GET', 'POST', 'DELETE']
                   )
 
 

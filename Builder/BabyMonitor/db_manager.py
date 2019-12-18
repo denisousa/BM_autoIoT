@@ -227,18 +227,11 @@ def setup():
         print(error)
 
 #Import models
-from models.Baby_Monitor import Baby_Monitor
+from models.Monitor import Monitor
 
-from models.Baby_MonitorMainSensor import Baby_MonitorMainSensor
+from models.MonitorMainSensor import MonitorMainSensor
 
-from models.Baby_MonitorMainSensorData import Baby_MonitorMainSensorData
-
-
-from models.Smart_Light import Smart_Light
-
-from models.Smart_LightMainSensor import Smart_LightMainSensor
-
-from models.Smart_LightMainSensorData import Smart_LightMainSensorData
+from models.MonitorMainSensorData import MonitorMainSensorData
 
 
 

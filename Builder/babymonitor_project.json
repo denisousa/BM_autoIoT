@@ -1,0 +1,60 @@
+{
+  "project": {
+    "name": "Baby Monitor Project",
+    "description": "The Baby Monitor Project.",
+    "app_port": 5000
+  },
+  "database": {
+    "type": "sqlite",
+    "hostname": "localhost",
+    "port": 0,
+    "database_name": "",
+    "username": "",
+    "password": ""
+  },
+  "mqtt": {
+    "hostname": "localhost",
+    "port": 1883,
+    "username": "admin",
+    "password": "public"
+  },
+  "devices": [
+    {
+      "name": "Monitor",
+      "description": "An IoT device monitors a baby. The sensors allow it to sense the sleeping, breathing and cry.",
+      "fields": {
+        "name": "String",
+		"barcode": "String"
+      },
+      "sensors": [
+        {
+          "name": "MainSensor",
+          "fields": {
+            "send_interval": "String"
+          },
+          "data_fields": {
+            "sleeping": "Integer",
+            "time_no_breathing": "Integer",
+            "crying": "Integer"
+          }
+        }
+      ]
+    },
+    {
+        "name": "SmartPhone",
+        "description": "A Smartphone that receives the notifications.",
+        "fields": {
+          "name": "String",
+          "barcode": "String"
+        }
+    },
+    {
+        "name": "SmartTV",
+        "description": "A TV.",
+        "fields": {
+          "name": "String",
+          "barcode": "String"
+        }
+    }
+  ]
+}
