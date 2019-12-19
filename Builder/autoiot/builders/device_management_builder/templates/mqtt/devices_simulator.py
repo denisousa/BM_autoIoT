@@ -2,6 +2,7 @@ import paho.mqtt.client as mqtt
 import threading
 import json
 import time
+import random
 
 from models import *
 
@@ -34,9 +35,9 @@ def send_data_{{device.get_name_camel_case()}}(client):
         {% if data.type|string == 'String' and data.name != 'key' %}
         message['{{sensor.get_name_camel_case()}}_sensor']['{{data.name}}'] = 'test'
         {% elif data.type|string == 'Boolean' %}
-        message['{{sensor.get_name_camel_case()}}_sensor']['{{data.name}}'] = True if i % 2 == 0 else False
-        {% elif data.type|string == 'Integer' %}
-        message['{{sensor.get_name_camel_case()}}_sensor']['{{data.name}}'] = i
+        message['{{sensor.get_name_camel_case()}}_sensor']['{{data.name}}'] = True if i % 7 == 0 else False
+        #{% elif data.type|string == 'Integer' %}
+        #message['{{sensor.get_name_camel_case()}}_sensor']['{{data.name}}'] = i
         {% elif data.type|string == 'Float' %}
         message['{{sensor.get_name_camel_case()}}_sensor']['{{data.name}}'] = i**2
         {% elif data.type|string == 'Point' %}
@@ -56,11 +57,17 @@ def send_data_{{device.get_name_camel_case()}}(client):
             increment = 1
             i += increment
 
+        if message[sensor.data_fields]['breathing'] == False:
+            message[sensor.data_fields]['time_no_breathing'] += 1
+        elif message[sensor.data_fields]['breathing'] == True:
+            message[sensor.data_fields]['time_no_breathing'] = 0
+            
+
         client.publish('{{device.project.get_name_camel_case()}}/data/{{device.get_name_camel_case()}}',
                        json.dumps(message))  # publish
         print('Sending data to {}.'.format('{{device.get_name_camel_case()}}'))
 
-        time.sleep(15)
+        time.sleep(1)
 
 
 def register_device_{{device.get_name_camel_case()}}(client):

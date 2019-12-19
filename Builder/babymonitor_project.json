@@ -33,9 +33,10 @@
             "send_interval": "String"
           },
           "data_fields": {
-            "sleeping": "Integer",
+            "sleeping": "Boolean",
+            "breathing": "Boolean",
             "time_no_breathing": "Integer",
-            "crying": "Integer"
+            "crying": "Boolean"
           }
         }
       ]
