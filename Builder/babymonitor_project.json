@@ -21,10 +21,10 @@
   "devices": [
     {
       "name": "Monitor",
-      "description": "An IoT device monitors a baby. The sensors allow it to sense the sleeping, breathing and cry.",
+      "description": "An IoT device that sends sleeping, breathing and crying status of a baby.",
       "fields": {
         "name": "String",
-		"barcode": "String"
+        "barcode": "String"
       },
       "sensors": [
         {
@@ -33,29 +33,13 @@
             "send_interval": "String"
           },
           "data_fields": {
-            "sleeping": "Boolean",
             "breathing": "Boolean",
-            "time_no_breathing": "Integer",
-            "crying": "Boolean"
+            "crying": "Boolean",
+            "sleeping": "Boolean",
+			"time_no_breathing": "Integer"
           }
         }
       ]
-    },
-    {
-        "name": "SmartPhone",
-        "description": "A Smartphone that receives the notifications.",
-        "fields": {
-          "name": "String",
-          "barcode": "String"
-        }
-    },
-    {
-        "name": "SmartTV",
-        "description": "A TV.",
-        "fields": {
-          "name": "String",
-          "barcode": "String"
-        }
     }
   ]
 }
