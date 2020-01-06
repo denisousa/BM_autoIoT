@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/adrilene/Área de Trabalho/BabyMonitor/Builder/BabyMonitor/ENV/bin/python3" "$0" "$@"
+'''exec' "/home/adrilene/Área de Trabalho/BM_autoIoT/Builder/BabyMonitor/ENV/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

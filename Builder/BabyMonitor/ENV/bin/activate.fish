@@ -57,7 +57,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/adrilene/Área de Trabalho/BabyMonitor/Builder/BabyMonitor/ENV"
+set -gx VIRTUAL_ENV "/home/adrilene/Área de Trabalho/BM_autoIoT/Builder/BabyMonitor/ENV"
 
 # https://github.com/fish-shell/fish-shell/issues/436 altered PATH handling
 if test (echo $FISH_VERSION | tr "." "\n")[1] -lt 3

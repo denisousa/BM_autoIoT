@@ -28,17 +28,34 @@
       },
       "sensors": [
         {
-          "name": "MainSensor",
+          	"name": "BreathingSensor",
+          	"fields": {
+            "send_interval": "String"
+        	},
+          	"data_fields": {
+            "breathing": "Boolean",
+			"time_no_breathing": "Integer"
+          	}
+        },
+        {
+          "name": "SleepingSensor",
           "fields": {
             "send_interval": "String"
           },
           "data_fields": {
-            "breathing": "Boolean",
-            "crying": "Boolean",
-            "sleeping": "Boolean",
-			"time_no_breathing": "Integer"
+            "sleeping": "Boolean"			      
           }
-        }
+		},
+		{
+			"name": "CryingSensor",
+			"fields": {
+			  "send_interval": "String"
+			},
+			"data_fields": {
+			  "crying": "Boolean"			      
+			}
+		  }
+		
       ]
     }
   ]

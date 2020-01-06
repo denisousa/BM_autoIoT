@@ -1,4 +1,4 @@
-#!/home/adrilene/Área de Trabalho/BabyMonitor/Builder/BabyMonitor/ENV/bin/python
+#!/home/adrilene/Área de Trabalho/BM_autoIoT/Builder/BabyMonitor/ENV/bin/python
 
 import sys
 import getopt

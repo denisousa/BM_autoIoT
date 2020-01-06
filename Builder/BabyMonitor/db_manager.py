@@ -229,9 +229,17 @@ def setup():
 #Import models
 from models.Monitor import Monitor
 
-from models.MonitorMainSensor import MonitorMainSensor
+from models.MonitorBreathingSensor import MonitorBreathingSensor
 
-from models.MonitorMainSensorData import MonitorMainSensorData
+from models.MonitorBreathingSensorData import MonitorBreathingSensorData
+
+from models.MonitorSleepingSensor import MonitorSleepingSensor
+
+from models.MonitorSleepingSensorData import MonitorSleepingSensorData
+
+from models.MonitorCryingSensor import MonitorCryingSensor
+
+from models.MonitorCryingSensorData import MonitorCryingSensorData
 
 
 

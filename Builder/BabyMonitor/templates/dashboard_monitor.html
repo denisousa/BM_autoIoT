@@ -21,19 +21,7 @@
                 <div class="col-card col-md-6 mb-3">
                     <div class="card">
                         {% from 'components/time_series_chart.html' import time_series_chart %}
-                        {{time_series_chart( object = monitor , socket_namespace = 'data_monitor' , title = 'MainSensor' , sensor_name = 'main_sensor_sensor' , metric_name = 'sleeping' )}}
-                    </div>
-                </div>
-                <div class="col-card col-md-6 mb-3">
-                    <div class="card">
-                        {% from 'components/time_series_chart.html' import time_series_chart %}
-                        {{time_series_chart( object = monitor , socket_namespace = 'data_monitor' , title = 'MainSensor' , sensor_name = 'main_sensor_sensor' , metric_name = 'crying' )}}
-                    </div>
-                </div>
-                <div class="col-card col-md-6 mb-3">
-                    <div class="card">
-                        {% from 'components/time_series_chart.html' import time_series_chart %}
-                        {{time_series_chart( object = monitor , socket_namespace = 'data_monitor' , title = 'MainSensor' , sensor_name = 'main_sensor_sensor' , metric_name = 'time_no_breathing' )}}
+                        {{time_series_chart( object = monitor , socket_namespace = 'data_monitor' , title = 'BreathingSensor' , sensor_name = 'breathing_sensor_sensor' , metric_name = 'time_no_breathing' )}}
                     </div>
                 </div>
         </div>

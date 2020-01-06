@@ -1,14 +1,13 @@
-
-
 import paho.mqtt.client as mqtt
 import threading
 import json
+import time
 
 from models import *
 
 from config import configuration
 
-CONFIGURATION = 'development'
+CONFIGURATION = 'development'     
 
 #MQTT Manager
 
@@ -44,11 +43,11 @@ def baby_monitor_project_register_monitor(client, userdata, msg):
             device.key = message['key']
     
             
-            if 'barcode' in message:
-                device.barcode = message['barcode']
-            
             if 'name' in message:
                 device.name = message['name']
+            
+            if 'barcode' in message:
+                device.barcode = message['barcode']
             
             if 'key' in message:
                 device.key = message['key']
@@ -79,11 +78,11 @@ def baby_monitor_project_update_monitor(client, userdata, msg):
             device.key = message['key']
     
             
-            if 'barcode' in message:
-                device.barcode = message['barcode']
-            
             if 'name' in message:
                 device.name = message['name']
+            
+            if 'barcode' in message:
+                device.barcode = message['barcode']
             
             if 'key' in message:
                 device.key = message['key']
@@ -110,11 +109,26 @@ def baby_monitor_project_data_monitor(client, userdata, msg):
         if device: #Device in the database
             print('Adding data to device.')                
     
+            if 'breathing_sensor_sensor' in message:
+                if message['breathing_sensor_sensor']['time_no_breathing'] > 20:
+                    message['breathing_sensor_sensor']['time_no_breathing'] = 0
+
+                if not message['breathing_sensor_sensor']['breathing']:
+                    message['breathing_sensor_sensor']['time_no_breathing'] += 1
+                
+                if message['breathing_sensor_sensor']['time_no_breathing'] >15:
+                    print('Alert parents!')
+
+                device.breathing_sensor_sensor.add_metric_from_dict(message['breathing_sensor_sensor'])
+
+            if 'sleeping_sensor_sensor' in message:
+                device.sleeping_sensor_sensor.add_metric_from_dict(message['sleeping_sensor_sensor'])
             
-            if 'main_sensor_sensor' in message:
-                device.main_sensor_sensor.add_metric_from_dict(message['main_sensor_sensor'])
-            
-    
+            if 'crying_sensor_sensor' in message:
+                message['crying_sensor_sensor']['crying'] = not message['sleeping_sensor_sensor']['sleeping']
+
+                device.crying_sensor_sensor.add_metric_from_dict(message['crying_sensor_sensor'])
+        
             db.session.add(device)
             db.session.commit()
     
@@ -128,7 +142,7 @@ def baby_monitor_project_data_monitor(client, userdata, msg):
 #MQTT Manager class responsible for the communication between application and MQTT Broker.
 class MQTTManager:
     def __init__(self):
-        self.client = mqtt.Client(client_id='Baby Monitor Project.1576691963.0514681')
+        self.client = mqtt.Client(client_id='Baby Monitor Project.1578327599.3277664')
 
     def start_mqtt_thread(self):
         self.client.on_connect = on_connect

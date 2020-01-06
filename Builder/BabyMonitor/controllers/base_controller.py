@@ -22,6 +22,6 @@ def home():
     '''
     devices = []
 
-    devices.append(( "Monitor", "iot_default_device.png", "An IoT device monitors a baby. The sensors allow it to sense the sleeping, breathing and cry.", "monitor" ))
+    devices.append(( "Monitor", "iot_default_device.png", "An IoT device that sends sleeping, breathing and crying status of a baby.", "monitor" ))
 
     return render_template('home.html', devices=devices)

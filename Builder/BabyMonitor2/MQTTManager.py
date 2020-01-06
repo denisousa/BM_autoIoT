@@ -130,8 +130,7 @@ def baby_monitor_project_data_monitor(client, userdata, msg):
                     message['main_sensor_sensor']['sleeping'] = False       
 
 
-                device.main_sensor_sensor.add_metric_from_dict(message['main_sensor_sensor'])
-            
+                device.main_sensor_sensor.add_metric_from_dict(message['main_sensor_sensor'])   
     
             db.session.add(device)
             db.session.commit()

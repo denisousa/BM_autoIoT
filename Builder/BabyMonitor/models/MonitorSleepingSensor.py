@@ -3,9 +3,9 @@ from main import db
 from datetime import datetime
 
 
-from models.MonitorMainSensorData import MonitorMainSensorData
+from models.MonitorSleepingSensorData import MonitorSleepingSensorData
 
-class MonitorMainSensor(db.Model):
+class MonitorSleepingSensor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -13,32 +13,30 @@ class MonitorMainSensor(db.Model):
 
     monitor_id = db.Column(db.Integer, db.ForeignKey("monitor.id"))
 
-    metrics = db.relationship("MonitorMainSensorData", backref="monitor_main_sensor", lazy='dynamic', cascade="all, delete-orphan")
+    metrics = db.relationship("MonitorSleepingSensorData", backref="monitor_sleeping_sensor", lazy='dynamic', cascade="all, delete-orphan")
 
     def __repr__(self):
-        return "<MonitorMainSensor {}>".format(self.id)
+        return "<MonitorSleepingSensor {}>".format(self.id)
 
     def created(self):
         return self.created_at.strftime("%d/%m/%Y %H:%M:%S")
 
-    def add_metric(self, sleeping, crying, time_no_breathing):
-        new_metric = MonitorMainSensorData(monitor_main_sensor=self)
+    def add_metric(self, sleeping):
+        new_metric = MonitorSleepingSensorData(monitor_sleeping_sensor=self)
 
         new_metric.sleeping = sleeping
-        new_metric.crying = crying
-        new_metric.time_no_breathing = time_no_breathing
 
         db.session.add(new_metric)
         db.session.commit()
 
     def add_metric_from_dict(self, D):
         try:
-            new_metric = MonitorMainSensorData(monitor_main_sensor=self)
+            new_metric = MonitorSleepingSensorData(monitor_sleeping_sensor=self)
 
             print(D)
 
             for k, v in D.items():
-                #if type(getattr(MonitorMainSensorData, k)) == property :
+                #if type(getattr(MonitorSleepingSensorData, k)) == property :
                 if hasattr(new_metric, k + '_raw_point_x'):
                     print('Probably a position attr. Trying to set as a POINT attr.')
 
@@ -65,7 +63,7 @@ class MonitorMainSensor(db.Model):
         return self.metrics.count()
 
     def get_metrics_to_plot(self, axis, metric_name):
-        metrics = self.metrics.filter(getattr(MonitorMainSensorData, metric_name) != None).order_by(MonitorMainSensorData.created_at.desc()).limit(30).all()
+        metrics = self.metrics.filter(getattr(MonitorSleepingSensorData, metric_name) != None).order_by(MonitorSleepingSensorData.created_at.desc()).limit(30).all()
 
         if axis == 'x':
             result = [metric.created_at.isoformat() for metric in metrics]
@@ -76,9 +74,9 @@ class MonitorMainSensor(db.Model):
 
     def get_last_metric_data(self, metric_name):
         
-        if not hasattr(MonitorMainSensorData, metric_name):
+        if not hasattr(MonitorSleepingSensorData, metric_name):
             return None
         
-        metric = self.metrics.filter(getattr(MonitorMainSensorData, metric_name) != None).order_by(MonitorMainSensorData.created_at.desc()).first()
+        metric = self.metrics.filter(getattr(MonitorSleepingSensorData, metric_name) != None).order_by(MonitorSleepingSensorData.created_at.desc()).first()
 
         return metric

@@ -28,7 +28,7 @@ def _deactivate(args):
 _deactivate(["nondestructive"])
 aliases["deactivate"] = _deactivate
 
-$VIRTUAL_ENV = r"/home/adrilene/Área de Trabalho/BabyMonitor/Builder/BabyMonitor/ENV"
+$VIRTUAL_ENV = r"/home/adrilene/Área de Trabalho/BM_autoIoT/Builder/BabyMonitor/ENV"
 
 $_OLD_VIRTUAL_PATH = $PATH
 $PATH = $PATH[:]

@@ -91,14 +91,34 @@ if __name__ == '__main__':
     from models import Monitor
     api.create_api(Monitor, methods=['GET', 'POST', 'DELETE'], primary_key='key')
 
-    # Automatically generates an API based on MonitorMainSensor model
-    from models import MonitorMainSensor
-    api.create_api(MonitorMainSensor, methods=['GET', 'POST', 'DELETE']
+    # Automatically generates an API based on MonitorBreathingSensor model
+    from models import MonitorBreathingSensor
+    api.create_api(MonitorBreathingSensor, methods=['GET', 'POST', 'DELETE']
                    )
 
-    # Automatically generates an API based on MonitorMainSensorData model
-    from models import MonitorMainSensorData
-    api.create_api(MonitorMainSensorData, methods=['GET', 'POST', 'DELETE']
+    # Automatically generates an API based on MonitorBreathingSensorData model
+    from models import MonitorBreathingSensorData
+    api.create_api(MonitorBreathingSensorData, methods=['GET', 'POST', 'DELETE']
+                  )
+
+    # Automatically generates an API based on MonitorSleepingSensor model
+    from models import MonitorSleepingSensor
+    api.create_api(MonitorSleepingSensor, methods=['GET', 'POST', 'DELETE']
+                   )
+
+    # Automatically generates an API based on MonitorSleepingSensorData model
+    from models import MonitorSleepingSensorData
+    api.create_api(MonitorSleepingSensorData, methods=['GET', 'POST', 'DELETE']
+                  )
+
+    # Automatically generates an API based on MonitorCryingSensor model
+    from models import MonitorCryingSensor
+    api.create_api(MonitorCryingSensor, methods=['GET', 'POST', 'DELETE']
+                   )
+
+    # Automatically generates an API based on MonitorCryingSensorData model
+    from models import MonitorCryingSensorData
+    api.create_api(MonitorCryingSensorData, methods=['GET', 'POST', 'DELETE']
                   )
 
 
