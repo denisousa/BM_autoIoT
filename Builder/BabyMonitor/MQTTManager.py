@@ -2,6 +2,7 @@ import paho.mqtt.client as mqtt
 import threading
 import json
 import time
+import random
 
 from models import *
 
@@ -95,14 +96,31 @@ def baby_monitor_project_update_monitor(client, userdata, msg):
             print('Device not in the database.')
     
     except Exception as e:
-        print(e)
-            
+        print(e) 
+
+maxNoChanges = random.randint(1,20) 
+choice = random.choices([True, False], [0.75, 0.25], k = 1)[0]
+changes = 0 
+
+def makeChoices():
+    global maxNoChanges, choice, changes
+
+    if changes >= maxNoChanges: 
+        maxNoChanges = random.randint(1,20)
+        changes = 0
+        choice = random.choices([True, False], [0.75, 0.25], k = 1)[0]
+    else:  
+        changes += 1
+
+    print("Max: {}. Changes: {}.".format(maxNoChanges, changes))
+        
 def baby_monitor_project_data_monitor(client, userdata, msg):
     '''
     Callback function triggered when a message arrives in the topic "baby_monitor_project/data/monitor"
     '''
     
     try:
+        global choice, changes
         message = json.loads(msg.payload)
         device = Monitor.query.filter_by(key=message['key']).first()
     
@@ -110,14 +128,21 @@ def baby_monitor_project_data_monitor(client, userdata, msg):
             print('Adding data to device.')                
     
             if 'breathing_sensor_sensor' in message:
-                if message['breathing_sensor_sensor']['time_no_breathing'] > 20:
-                    message['breathing_sensor_sensor']['time_no_breathing'] = 0
+                
+                makeChoices()
+                message['breathing_sensor_sensor']['breathing'] = choice
+               
+                if not choice:
+                    message['breathing_sensor_sensor']['time_no_breathing'] = changes
+                
+                else:
+                    message['breathing_sensor_sensor']['time_no_breathing'] = 0 
+                
+                if message['breathing_sensor_sensor']['time_no_breathing'] > 15:
+                    print('Alert parents!')
 
                 if not message['breathing_sensor_sensor']['breathing']:
-                    message['breathing_sensor_sensor']['time_no_breathing'] += 1
-                
-                if message['breathing_sensor_sensor']['time_no_breathing'] >15:
-                    print('Alert parents!')
+                    count = 0
 
                 device.breathing_sensor_sensor.add_metric_from_dict(message['breathing_sensor_sensor'])
 

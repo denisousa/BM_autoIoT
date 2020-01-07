@@ -1,7 +1,7 @@
 {
     "send_interval": [
-        10,
-        15
+        1,
+        1
     ],
     "fields": {
         "name": "test",
@@ -20,7 +20,7 @@
                 "Integer",
                 1,
                 0,
-                100
+                20
             ]
         },
         "sleeping_sensor_sensor": {

@@ -63,8 +63,6 @@ def send_data_{{device.get_name_camel_case()}}(client):
                        json.dumps(message))  # publish
         print('Sending data to {}.'.format('{{device.get_name_camel_case()}}'))
 
-        time.sleep(1)
-
 
 def register_device_{{device.get_name_camel_case()}}(client):
     message = {}
