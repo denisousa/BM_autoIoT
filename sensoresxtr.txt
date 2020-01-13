@@ -1,0 +1,23 @@
+"sensors": [
+		  	{
+				"name": "MessageSensor",
+				"fields": {
+			  		"send_interval": "String"
+			  	},
+				"data_fields": {
+					"messages": "String"
+				}
+		  	}		  
+		]
+
+"sensors": [
+		  	{
+				"name": "CommandsSensor",
+				"fields": {
+			  		"send_interval": "String"
+			  	},
+				"data_fields": {
+					"commands": "String"
+				}
+		  	}		  
+		]

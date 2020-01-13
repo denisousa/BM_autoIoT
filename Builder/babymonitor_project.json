@@ -55,26 +55,16 @@
             	"crying": "Boolean"			      
           	}
         }
-      ]
+      	]
 	}, 
 	{
 		"name": "SmartPhone",
 		"description": "The smartphone used to receive the notifications.",
 		"fields": {
 			"name": "String",
-		  	"barcode": "String"
+			"barcode": "String"
 		},
-		"sensors": [
-		  	{
-				"name": "MessageSensor",
-				"fields": {
-			  		"send_interval": "String"
-			  	},
-				"data_fields": {
-					"messages": "String"
-				}
-		  	}		  
-		]
+		"sensors":[]
 	},
 	{
 		"name": "SmartTV",
@@ -83,17 +73,8 @@
 		  "name": "String",
 		  "barcode": "String"
 		},
-		"sensors": [
-		  	{
-				"name": "CommandsSensor",
-				"fields": {
-			  		"send_interval": "String"
-			  	},
-				"data_fields": {
-					"commands": "String"
-				}
-		  	}		  
-		]
+		"sensors":[]
+		
 	}
 
   ]
