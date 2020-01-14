@@ -3,7 +3,7 @@ from flask import Blueprint, redirect, url_for, g, render_template, request, fla
 from forms.FormLogin import FormLogin
 
 from sqlalchemy.orm.attributes import InstrumentedAttribute
-from models.SmartTV import SmartTV
+from models.SmartTv import SmartTv
 
 from main import db
 
@@ -18,10 +18,10 @@ def dashboard(id):
     :return: Render the HTML page
     '''
     
-    smart_tv = SmartTV.query.filter_by(id=id).first()
+    smart_tv = SmartTv.query.filter_by(id=id).first()
     list_of_attrs = []
     list_of_sensors = []
-    for k, v in vars(SmartTV).items():
+    for k, v in vars(SmartTv).items():
         if (type(v) == InstrumentedAttribute):
             if('_sensor' in k):
                 list_of_sensors.append(k)
@@ -38,11 +38,11 @@ def list():
     Returns information about the types of sensors.
     :return: Renders sensors list.
     '''
-    models = SmartTV.query.all()
+    models = SmartTv.query.all()
 
     list_of_attrs = []
     list_of_sensors = []
-    for k, v in vars(SmartTV).items():
+    for k, v in vars(SmartTv).items():
         if (type(v) == InstrumentedAttribute):
 
             if('_sensor' in k):
@@ -60,14 +60,14 @@ def delete(id):
     :param id: smart_tv object id.
     :return: Redirects to List Page.
     '''
-    selected_object = SmartTV.query.filter_by(id=id).first()
+    selected_object = SmartTv.query.filter_by(id=id).first()
 
     if (selected_object):
         db.session.delete(selected_object)
         db.session.commit()
 
-        flash('SmartTV deleted successfully.', 'success')
+        flash('SmartTv deleted successfully.', 'success')
         return redirect(url_for('smart_tv_template.list'))
 
-    flash('Error deleting the SmartTV.', 'danger')
+    flash('Error deleting the SmartTv.', 'danger')
     return redirect(url_for('smart_tv_template.list'))

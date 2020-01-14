@@ -9,7 +9,11 @@ from .MonitorCryingSensorData import *
 
 from .SmartPhone import *
 
+from .SmartPhoneNotificationSensor import *
+from .SmartPhoneNotificationSensorData import *
 
-from .SmartTV import *
+from .SmartTv import *
 
+from .SmartTvCommandSensor import *
+from .SmartTvCommandSensorData import *
 

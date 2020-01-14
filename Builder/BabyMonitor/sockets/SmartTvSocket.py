@@ -15,20 +15,20 @@ def background_thread(_socketio : SocketIO, _current_app : Flask, _namespace):
 
 
     def on_connect(client, userdata, flags, rc):
-        print("Connected with result code in " + str(rc) + ' SmartTV')
+        print("Connected with result code in " + str(rc) + ' SmartTv')
 
         client.subscribe('baby_monitor_project/data/smart_tv')
 
     def on_message(client, userdata, message):
         data = json.loads(message.payload)
         _socketio.emit('data_smart_tv',
-                       {'message': 'New data from SmartTV', 'data': data},
+                       {'message': 'New data from SmartTv', 'data': data},
                        namespace=_namespace)
     try:
 
         app = _current_app
 
-        client = mqtt.Client(client_id='Baby Monitor ProjectSmartTV')
+        client = mqtt.Client(client_id='Baby Monitor ProjectSmartTv')
 
         client.on_connect = on_connect
         client.on_message = on_message
@@ -47,7 +47,7 @@ def background_thread(_socketio : SocketIO, _current_app : Flask, _namespace):
         
         
 
-class SmartTVSocket(Namespace):
+class SmartTvSocket(Namespace):
 
     def __init__(self, app, namespace):
         super(Namespace, self).__init__(namespace)

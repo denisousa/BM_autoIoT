@@ -21,11 +21,11 @@ class MonitorBreathingSensor(db.Model):
     def created(self):
         return self.created_at.strftime("%d/%m/%Y %H:%M:%S")
 
-    def add_metric(self, time_no_breathing, breathing):
+    def add_metric(self, breathing, time_no_breathing):
         new_metric = MonitorBreathingSensorData(monitor_breathing_sensor=self)
 
-        new_metric.time_no_breathing = time_no_breathing
         new_metric.breathing = breathing
+        new_metric.time_no_breathing = time_no_breathing
 
         db.session.add(new_metric)
         db.session.commit()

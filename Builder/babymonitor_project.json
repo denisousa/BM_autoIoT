@@ -64,16 +64,36 @@
 			"name": "String",
 			"barcode": "String"
 		},
-		"sensors":[]
+		"sensors": [
+			{
+			  "name": "NotificationSensor",
+			  "fields": {
+					"send_interval": "String"
+				},
+			  "data_fields": {
+				  "notification": "String"
+			  }
+			}		  
+	  	]
 	},
 	{
-		"name": "SmartTV",
+		"name": "SmartTv",
 		"description": "The TV that will be used as an accessory.",
 		"fields": {
 		  "name": "String",
 		  "barcode": "String"
 		},
-		"sensors":[]
+		"sensors": [
+			{
+			  "name": "CommandSensor",
+			  "fields": {
+					"send_interval": "String"
+				},
+			  "data_fields": {
+				  "command": "String"
+			  }
+			}		  
+	  	]
 		
 	}
 

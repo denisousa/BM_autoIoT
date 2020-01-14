@@ -244,8 +244,16 @@ from models.MonitorCryingSensorData import MonitorCryingSensorData
 
 from models.SmartPhone import SmartPhone
 
+from models.SmartPhoneNotificationSensor import SmartPhoneNotificationSensor
 
-from models.SmartTV import SmartTV
+from models.SmartPhoneNotificationSensorData import SmartPhoneNotificationSensorData
+
+
+from models.SmartTv import SmartTv
+
+from models.SmartTvCommandSensor import SmartTvCommandSensor
+
+from models.SmartTvCommandSensorData import SmartTvCommandSensorData
 
 
 
