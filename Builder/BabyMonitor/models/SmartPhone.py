@@ -29,3 +29,7 @@ class SmartPhone(db.Model):
             self.notification_sensor_sensor = SmartPhoneNotificationSensor( smart_phone = self)
 
         db.session.commit()
+
+    def send_comand_to_tv(self, TV):
+        TV.change_status(self)
+        

@@ -21,13 +21,20 @@ class SmartPhoneNotificationSensor(db.Model):
     def created(self):
         return self.created_at.strftime("%d/%m/%Y %H:%M:%S")
 
+    def show_notification(self, new_metric):
+        print("\nFrom SmartPhone")
+        print("Notification Received!")
+        print(new_metric.notification, '\n')
+
     def add_metric(self, notification):
         new_metric = SmartPhoneNotificationSensorData(smart_phone_notification_sensor=self)
 
         new_metric.notification = notification
+        self.show_notification(new_metric)
 
         db.session.add(new_metric)
         db.session.commit()
+
 
     def add_metric_from_dict(self, D):
         try:
@@ -66,6 +73,12 @@ class SmartPhoneNotificationSensor(db.Model):
         except Exception as e: 
             print("Couldn't receive notification.")
 
+    #new method 
+    '''def show_info(self):
+        #show = getattr(self, 'notification')
+        metrics = self.metrics.filter(getattr(SmartPhoneNotificationSensorData, 'notification') != None).order_by(SmartPhoneNotificationSensorData.created_at.desc()).limit(30).all()
+        metrics[0] = 1
+        print(metrics[0])'''
 
     def number_of_metrics(self):
         return self.metrics.count()

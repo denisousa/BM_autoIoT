@@ -11,8 +11,16 @@ class SmartTv(db.Model):
     barcode = db.Column(db.String)
     name = db.Column(db.String)
     key = db.Column(db.String, unique=True, nullable=False)
+    status = 0
 
     command_sensor_sensor = db.relationship("SmartTvCommandSensor", uselist=False, backref="smart_tv", cascade="all, delete-orphan")
+
+    def change_status(self, who):
+        if SmartPhone in str(who):
+            if self.status == 0:
+                self.status = 1
+        else: 
+            print("Unauthorized!")
 
     def __repr__(self):
         return "<SmartTv {}>".format(self.id)

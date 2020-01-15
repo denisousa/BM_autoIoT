@@ -17,7 +17,7 @@ def background_thread(_socketio : SocketIO, _current_app : Flask, _namespace):
     def on_connect(client, userdata, flags, rc):
         print("Connected with result code in " + str(rc) + ' SmartPhone')
 
-        client.subscribe('baby_monitor_project/data/smart_phone')
+        #client.subscribe('baby_monitor_project/data/smart_phone')
 
     def on_message(client, userdata, message):
         data = json.loads(message.payload)
