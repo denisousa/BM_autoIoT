@@ -35,7 +35,6 @@ class SmartPhoneNotificationSensor(db.Model):
         db.session.add(new_metric)
         db.session.commit()
 
-
     def add_metric_from_dict(self, D):
         try:
             new_metric = SmartPhoneNotificationSensorData(smart_phone_notification_sensor=self)

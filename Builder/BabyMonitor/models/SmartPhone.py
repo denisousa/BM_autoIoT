@@ -4,6 +4,7 @@ from datetime import datetime
 
 from models.SmartPhoneNotificationSensor import SmartPhoneNotificationSensor
 
+
 class SmartPhone(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -30,6 +31,3 @@ class SmartPhone(db.Model):
 
         db.session.commit()
 
-    def send_comand_to_tv(self, TV):
-        TV.change_status(self)
-        

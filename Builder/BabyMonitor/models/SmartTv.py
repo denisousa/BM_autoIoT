@@ -16,7 +16,7 @@ class SmartTv(db.Model):
     command_sensor_sensor = db.relationship("SmartTvCommandSensor", uselist=False, backref="smart_tv", cascade="all, delete-orphan")
 
     def change_status(self, who):
-        if SmartPhone in str(who):
+        if 'SmartPhone' in str(who):
             if self.status == 0:
                 self.status = 1
         else: 
@@ -37,3 +37,4 @@ class SmartTv(db.Model):
             self.command_sensor_sensor = SmartTvCommandSensor( smart_tv = self)
 
         db.session.commit()
+    

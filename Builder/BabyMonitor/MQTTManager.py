@@ -9,6 +9,13 @@ from config import configuration
 
 CONFIGURATION = 'development'
 
+#Globals
+
+# -Variables useful to change data
+maxNoChanges = random.randint(1,20) 
+breathing = random.choices([True, False], [0.75, 0.25], k = 1)[0]
+changes = 0 
+
 #MQTT Manager
 
 def on_connect(client, userdata, flags, rc):
@@ -104,11 +111,6 @@ def baby_monitor_project_update_monitor(client, userdata, msg):
     except Exception as e:
         print(e)
 
-#Variables useful to change data
-maxNoChanges = random.randint(1,20) 
-breathing = random.choices([True, False], [0.75, 0.25], k = 1)[0]
-changes = 0 
-
 #It makes the change of the baby's breathing status
 def chooseBreathing(crying):
     global maxNoChanges, breathing, changes
@@ -134,9 +136,7 @@ def baby_monitor_project_data_monitor(client, userdata, msg):
         message = json.loads(msg.payload)
         device = Monitor.query.filter_by(key=message['key']).first()
         smP = SmartPhone.query.filter_by(key=message['key']).first()
-        TV = SmartTv.query.filter_by(key=message['key']).first()
 
-        smP.send_comand_to_tv()
         if device: #Device in the database
             print('Adding data to device.')  
                         
@@ -172,15 +172,14 @@ def baby_monitor_project_data_monitor(client, userdata, msg):
                     smP.notification_sensor_sensor.add_metric("The baby hasn't been breathing for {} seconds!".format(changes))
 
                 if message['breathing_sensor_sensor']['time_no_breathing'] > 10:
-                    smP.send_comand_to_tv(TV)
+                    pass
+                    
 
                 if not message['breathing_sensor_sensor']['breathing']:
                     count = 0
                 
                 baby_monitor_project_data_smart_phone(client, userdata, msg)
                 device.breathing_sensor_sensor.add_metric_from_dict(message['breathing_sensor_sensor'])
-
-            #smP.notification_sensor_data.show_info()
 
             db.session.add(device)
             db.session.commit()
@@ -196,7 +195,6 @@ def baby_monitor_project_register_smart_phone(client, userdata, msg):
     '''
     Callback function triggered when a message arrives in the topic "baby_monitor_project/register/smart_phone"
     '''
-    
     try:
         message = json.loads(msg.payload)
         device = SmartPhone.query.filter_by(key=message['key']).first()
@@ -230,7 +228,6 @@ def baby_monitor_project_update_smart_phone(client, userdata, msg):
     '''
     Callback function triggered when a message arrives in the topic "baby_monitor_project/update/smart_phone"
     '''
-    
     try:
         message = json.loads(msg.payload)
         device = SmartPhone.query.filter_by(key=message['key']).first()
@@ -267,11 +264,13 @@ def baby_monitor_project_data_smart_phone(client, userdata, msg):
     try:
         message = json.loads(msg.payload)
         device = SmartPhone.query.filter_by(key=message['key']).first()
+        tv = SmartTv.query.filter_by(key=message['key'])
+        print('Teste ', tv)
         
         if device: #Device in the database
             
             if 'notification_sensor_sensor' in message:
-                
+                baby_monitor_project_register_smart_phone(client, userdata, msg)
                 device.notification_sensor_sensor.add_metric_from_dict(message['notification_sensor_sensor'])
             
     
@@ -281,11 +280,11 @@ def baby_monitor_project_data_smart_phone(client, userdata, msg):
         else: #Device not in the database
             #print('Device not in the database.')
             baby_monitor_project_register_smart_phone(client, userdata, msg)
-            print('TESTE ', device)
-    
+                
     except Exception as e:
         print(e)
-            
+
+          
 def baby_monitor_project_register_smart_tv(client, userdata, msg):
     '''
     Callback function triggered when a message arrives in the topic "baby_monitor_project/register/smart_tv"
@@ -294,7 +293,7 @@ def baby_monitor_project_register_smart_tv(client, userdata, msg):
     try:
         message = json.loads(msg.payload)
         device = SmartTv.query.filter_by(key=message['key']).first()
-    
+        
         if not device: #Device is not in the database
             print('Creating new device.')
             device = SmartTv()
@@ -335,7 +334,6 @@ def baby_monitor_project_update_smart_tv(client, userdata, msg):
             
             device.key = message['key']
     
-            
             if 'barcode' in message:
                 device.barcode = message['barcode']
             
@@ -363,22 +361,20 @@ def baby_monitor_project_data_smart_tv(client, userdata, msg):
     try:
         message = json.loads(msg.payload)
         device = SmartTv.query.filter_by(key=message['key']).first()
-    
         if device: #Device in the database
-            print('Adding data to device.')                
-    
-            
+            print('Adding data to device TV.')                
+                      
             if 'command_sensor_sensor' in message:
                 device.command_sensor_sensor.add_metric_from_dict(message['command_sensor_sensor'])
             
-    
             db.session.add(device)
             db.session.commit()
     
         else: #Device not in the database
             #print('Device SmartTV not in the database.')
             baby_monitor_project_register_smart_tv(client, userdata, msg)
-    
+            
+
     except Exception as e:
         print(e)
 
@@ -400,6 +396,11 @@ class MQTTManager:
 
         # Register callback functions to each topic
         
+        #### SmartTV ####
+        self.client.message_callback_add('baby_monitor_project/register/smart_tv', baby_monitor_project_register_smart_tv)
+        self.client.message_callback_add('baby_monitor_project/update/smart_tv', baby_monitor_project_update_smart_tv)
+        self.client.message_callback_add('baby_monitor_project/data/smart_tv', baby_monitor_project_data_smart_tv)
+        
         #### Monitor ####
         self.client.message_callback_add('baby_monitor_project/register/monitor', baby_monitor_project_register_monitor)
         self.client.message_callback_add('baby_monitor_project/update/monitor', baby_monitor_project_update_monitor)
@@ -410,10 +411,6 @@ class MQTTManager:
         self.client.message_callback_add('baby_monitor_project/update/monitor', baby_monitor_project_update_smart_phone)
         #self.client.message_callback_add('baby_monitor_project/data/monitor', baby_monitor_project_data_smart_phone)
     
-        #### SmartTV ####
-        self.client.message_callback_add('baby_monitor_project/register/smart_tv', baby_monitor_project_register_smart_tv)
-        self.client.message_callback_add('baby_monitor_project/update/smart_tv', baby_monitor_project_update_smart_tv)
-        self.client.message_callback_add('baby_monitor_project/data/smart_tv', baby_monitor_project_data_smart_tv)
 
         self.client.loop_start()
 
