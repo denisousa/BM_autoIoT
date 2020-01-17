@@ -11,16 +11,33 @@ class SmartTv(db.Model):
     barcode = db.Column(db.String)
     name = db.Column(db.String)
     key = db.Column(db.String, unique=True, nullable=False)
-    status = 0
+    status = False
+    income_command = False
 
     command_sensor_sensor = db.relationship("SmartTvCommandSensor", uselist=False, backref="smart_tv", cascade="all, delete-orphan")
 
-    def change_status(self, who):
-        if 'SmartPhone' in str(who):
-            if self.status == 0:
-                self.status = 1
+    def change_status(self, caller):
+        if 'SmartPhone' in str(caller):
+            if not self.status:
+                self.status = True
+            else: 
+                print('Already active.')
         else: 
             print("Unauthorized!")
+
+    def get_tv(self, caller):
+        if 'SmartPhone' in str(caller):
+            return self
+        else:
+            print("Unauthorized!")
+            return None
+
+    def receive_commands(self, caller, command):
+        if 'SmartPhone' in str(caller):
+            if 'status' in command.lower():
+                self.change_status
+            elif 'message' in command.lower():
+                self.show_message
 
     def __repr__(self):
         return "<SmartTv {}>".format(self.id)
@@ -37,4 +54,3 @@ class SmartTv(db.Model):
             self.command_sensor_sensor = SmartTvCommandSensor( smart_tv = self)
 
         db.session.commit()
-    

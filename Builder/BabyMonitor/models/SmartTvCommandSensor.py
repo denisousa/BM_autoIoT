@@ -5,6 +5,8 @@ from datetime import datetime
 
 from models.SmartTvCommandSensorData import SmartTvCommandSensorData
 
+from models.SmartTv import *
+
 class SmartTvCommandSensor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -21,13 +23,14 @@ class SmartTvCommandSensor(db.Model):
     def created(self):
         return self.created_at.strftime("%d/%m/%Y %H:%M:%S")
 
-    def add_metric(self, command):
-        new_metric = SmartTvCommandSensorData(smart_tv_command_sensor=self)
+    def add_metric(self, command, caller):
+        if 'SmartPhone' in str(caller):
+            new_metric = SmartTvCommandSensorData(smart_tv_command_sensor=self)
 
-        new_metric.command = command
+            new_metric.command = command
 
-        db.session.add(new_metric)
-        db.session.commit()
+            db.session.add(new_metric)
+            db.session.commit()
 
     def add_metric_from_dict(self, D):
         try:

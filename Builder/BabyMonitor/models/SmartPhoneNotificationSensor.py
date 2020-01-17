@@ -62,23 +62,6 @@ class SmartPhoneNotificationSensor(db.Model):
         except Exception as e:
             print('Error inserting metric!', e)
 
-    #added method
-    def receive_notifications(self, value):
-        try:
-            new_metric = SmartPhoneNotificationSensorData(smart_phone_notification_sensor = self)
-            setattr(new_metric, 'teste', value)
-            print("Received")
-
-        except Exception as e: 
-            print("Couldn't receive notification.")
-
-    #new method 
-    '''def show_info(self):
-        #show = getattr(self, 'notification')
-        metrics = self.metrics.filter(getattr(SmartPhoneNotificationSensorData, 'notification') != None).order_by(SmartPhoneNotificationSensorData.created_at.desc()).limit(30).all()
-        metrics[0] = 1
-        print(metrics[0])'''
-
     def number_of_metrics(self):
         return self.metrics.count()
 
